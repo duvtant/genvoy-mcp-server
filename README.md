@@ -97,16 +97,32 @@ If you provide a key without `Key ` prefix, Genvoy auto-normalizes it.
 
 ## MCP Client Configuration
 
-Use your client's MCP config to run local source:
+Use your client's MCP config to run the published package locally:
 
 ```json
 {
   "mcpServers": {
     "genvoy": {
-      "command": "C:\\Users\\HP\\Documents\\DAVID.DEV\\genvoy-mcp\\.venv\\Scripts\\python.exe",
-      "args": ["-m", "genvoy.server"],
+      "command": "uvx",
+      "args": ["genvoy"],
       "env": {
-        "PYTHONPATH": "C:\\Users\\HP\\Documents\\DAVID.DEV\\genvoy-mcp",
+        "FAL_KEY": "Key your_fal_key_here"
+      }
+    }
+  }
+}
+```
+
+For contributors (run directly from source in a cloned repo), use:
+
+```json
+{
+  "mcpServers": {
+    "genvoy-dev": {
+      "command": "<path-to-repo>\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "genvoy.server"],
+      "cwd": "<path-to-repo>",
+      "env": {
         "FAL_KEY": "Key your_fal_key_here"
       }
     }
