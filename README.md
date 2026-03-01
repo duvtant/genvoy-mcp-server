@@ -146,6 +146,9 @@ Use one of these patterns when you want deterministic placement:
 Security behavior:
 - path traversal outside allowed root is blocked with `PATH_TRAVERSAL_BLOCKED`.
 
+Cross-IDE placement tip:
+- if your IDE blocks direct writes to your target folder, generate to the IDE's default workspace output location first, then copy/move outputs into your desired project folder.
+
 ## Quick Validation Flow
 
 In your MCP-enabled IDE, run:
@@ -158,6 +161,10 @@ In your MCP-enabled IDE, run:
 
 If using Admin scope key:
 6. `read_resource` for `genvoy://recent`
+
+Model availability note:
+- some models returned by `search_models` may still fail at runtime (for example HTTP `405`) due to provider-side gating/deprecation/access controls.
+- for reliable compare runs, smoke-test each model with `get_schema` + single `generate` before using `generate_compare`.
 
 ## Tool Contract Snapshot
 
